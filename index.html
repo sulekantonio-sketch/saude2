@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde SP - Localizador de UBS e UPA</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-hospital-user"></i>
+                <span>Saúde SP</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#ubs-upa">UBS e UPA</a></li>
+                <li><a href="#vacinas">Vacinas</a></li>
+                <li><a href="#localizador">Localizador</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo ao Portal de Saúde de São Paulo</h1>
+            <p>Encontre UBS e UPA próximas a você e mantenha suas vacinas em dia</p>
+            <button class="btn btn-primary" onclick="scrollTo('localizador')">Encontrar Unidade</button>
+        </div>
+    </section>
+
+    <!-- Seção UBS e UPA -->
+    <section id="ubs-upa" class="section">
+        <div class="container">
+            <h2>O que são UBS e UPA?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h3>UBS - Unidade Básica de Saúde</h3>
+                    <p>A UBS é a porta de entrada do Sistema Único de Saúde (SUS). Oferece atendimento básico, consultas, vacinas, preventivos e medicações para problemas de saúde comuns.</p>
+                    <ul class="services-list">
+                        <li><i class="fas fa-check"></i> Consultas médicas</li>
+                        <li><i class="fas fa-check"></i> Vacinação</li>
+                        <li><i class="fas fa-check"></i> Preventivos</li>
+                        <li><i class="fas fa-check"></i> Encaminhamentos</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <h3>UPA - Unidade de Pronto Atendimento</h3>
+                    <p>A UPA funciona 24 horas para atender emergências e urgências que não requerem internação hospitalar. É ideal para situações que precisam de atendimento rápido.</p>
+                    <ul class="services-list">
+                        <li><i class="fas fa-check"></i> Atendimento 24h</li>
+                        <li><i class="fas fa-check"></i> Emergências e urgências</li>
+                        <li><i class="fas fa-check"></i> Exames rápidos</li>
+                        <li><i class="fas fa-check"></i> Medicamentos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-table">
+                <h3>Comparação: UBS x UPA</h3>
+                <table>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>UBS</th>
+                        <th>UPA</th>
+                    </tr>
+                    <tr>
+                        <td>Horário de Funcionamento</td>
+                        <td>Seg-Sex (7h-17h)</td>
+                        <td>24 horas, 7 dias</td>
+                    </tr>
+                    <tr>
+                        <td>Tipo de Atendimento</td>
+                        <td>Rotina e prevenção</td>
+                        <td>Urgência e emergência</td>
+                    </tr>
+                    <tr>
+                        <td>Vacinação</td>
+                        <td>Sim</td>
+                        <td>Não (rotineira)</td>
+                    </tr>
+                    <tr>
+                        <td>Internação</td>
+                        <td>Não</td>
+                        <td>Não</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Vacinas -->
+    <section id="vacinas" class="section bg-light">
+        <div class="container">
+            <h2>Vacinas Importantes</h2>
+            <p class="section-subtitle">Conheça as principais vacinas recomendadas e o que elas previnem</p>
+            
+            <div class="vaccines-grid">
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #e74c3c;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Tríplice Viral (SCR)</h3>
+                    <p><strong>Previne:</strong> Sarampo, Caxumba e Rubéola</p>
+                    <ul>
+                        <li>Dose 1: 12 meses</li>
+                        <li>Dose 2: 4-6 anos</li>
+                        <li>Reforço: conforme necessário</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #3498db;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Poliomielite (VIP/VOP)</h3>
+                    <p><strong>Previne:</strong> Paralisia Infantil</p>
+                    <ul>
+                        <li>Série inicial: 2, 4 e 6 meses</li>
+                        <li>Reforço: 15 meses e 4-6 anos</li>
+                        <li>Fundamental para crianças</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #2ecc71;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Difteria, Tétano e Coqueluche</h3>
+                    <p><strong>Previne:</strong> DTC</p>
+                    <ul>
+                        <li>Série inicial: 2, 4 e 6 meses</li>
+                        <li>Reforço: 15 meses e 4-6 anos</li>
+                        <li>Adultos: a cada 10 anos</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #f39c12;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Hepatite B</h3>
+                    <p><strong>Previne:</strong> Hepatite B</p>
+                    <ul>
+                        <li>Dose 1: Ao nascer</li>
+                        <li>Dose 2: 1 mês</li>
+                        <li>Dose 3: 6 meses</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #9b59b6;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Influenza</h3>
+                    <p><strong>Previne:</strong> Gripe</p>
+                    <ul>
+                        <li>Anualmente</li>
+                        <li>Especialmente para idosos</li>
+                        <li>E crianças menores de 5 anos</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #e67e22;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>COVID-19</h3>
+                    <p><strong>Previne:</strong> Coronavirus</p>
+                    <ul>
+                        <li>Série inicial: 2 doses</li>
+                        <li>Reforços anuais</li>
+                        <li>Disponível em UBS</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #1abc9c;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Febre Amarela</h3>
+                    <p><strong>Previne:</strong> Febre Amarela</p>
+                    <ul>
+                        <li>Recomendada para viajantes</li>
+                        <li>Dose única (na maioria dos casos)</li>
+                        <li>Válida por 10 anos</li>
+                    </ul>
+                </div>
+
+                <div class="vaccine-card">
+                    <div class="vaccine-header" style="background-color: #34495e;">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>HPV</h3>
+                    <p><strong>Previne:</strong> Câncer do Colo do Útero</p>
+                    <ul>
+                        <li>Meninas: 9-14 anos</li>
+                        <li>Meninos: 11-14 anos</li>
+                        <li>3 doses no esquema</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="vaccine-info-box">
+                <h3><i class="fas fa-lightbulb"></i> Dica Importante</h3>
+                <p>Mantenha sua carteira de vacinação sempre em dia! Visite a UBS mais próxima para verificar quais vacinas você ainda precisa tomar. Todas as vacinas do calendário básico são gratuitas pelo SUS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Localizador de GPS -->
+    <section id="localizador" class="section">
+        <div class="container">
+            <h2>Encontre a UBS ou UPA Mais Próxima</h2>
+            <p class="section-subtitle">Use sua localização atual para encontrar as unidades de saúde mais próximas</p>
+
+            <div class="localizador-container">
+                <div class="search-box">
+                    <div class="search-controls">
+                        <button class="btn btn-primary" onclick="getCurrentLocation()">
+                            <i class="fas fa-location-dot"></i> Usar Minha Localização
+                        </button>
+                        <div class="filter-options">
+                            <label>
+                                <input type="checkbox" id="filter-ubs" checked onchange="filterLocations()">
+                                UBS
+                            </label>
+                            <label>
+                                <input type="checkbox" id="filter-upa" checked onchange="filterLocations()">
+                                UPA
+                            </label>
+                        </div>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Digite o endereço ou bairro em São Paulo..." 
+                        class="search-input"
+                    >
+                </div>
+
+                <div id="map" class="map-container"></div>
+
+                <div class="results-container">
+                    <h3>Unidades Próximas</h3>
+                    <div id="resultsList" class="results-list">
+                        <p class="no-results">Clique em "Usar Minha Localização" para encontrar as unidades próximas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Dicas de Saúde -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2>Dicas de Saúde Importantes</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon" style="background-color: #e74c3c;">
+                        <i class="fas fa-hand-holding-medical"></i>
+                    </div>
+                    <h3>Higiene Pessoal</h3>
+                    <p>Lave as mãos frequentemente, especialmente antes de comer e após usar o banheiro. Use álcool gel quando necessário.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon" style="background-color: #3498db;">
+                        <i class="fas fa-apple"></i>
+                    </div>
+                    <h3>Alimentação Saudável</h3>
+                    <p>Consuma alimentos naturais, frutas e vegetais. Evite alimentos ultra-processados e reduza o consumo de açúcar.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon" style="background-color: #2ecc71;">
+                        <i class="fas fa-person-walking"></i>
+                    </div>
+                    <h3>Atividade Física</h3>
+                    <p>Pratique pelo menos 150 minutos de atividade física moderada por semana. Caminhe, dance ou pratique seu esporte favorito.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon" style="background-color: #9b59b6;">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3>Sono de Qualidade</h3>
+                    <p>Durma de 7 a 8 horas por noite. Mantenha uma rotina regular de sono para melhor saúde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="section">
+        <div class="container">
+            <h2>Fale Conosco</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>Central de Saúde de SP: (11) 3218-4300</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contato@saudesp.gov.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>São Paulo, SP - Brasil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                    <input 
+                        type="text" 
+                        placeholder="Seu Nome" 
+                        required
+                    >
+                    <input 
+                        type="email" 
+                        placeholder="Seu Email" 
+                        required
+                    >
+                    <textarea 
+                        placeholder="Sua Mensagem" 
+                        rows="5" 
+                        required
+                    ></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Saúde SP - Localizador de UBS e UPA. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="fas fa-heart"></i> para a saúde da população paulista</p>
+        </div>
+    </footer>
+
+    <script src="estilo.js"></script>
+</body>
+</html>
