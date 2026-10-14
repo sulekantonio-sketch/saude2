@@ -1,0 +1,145 @@
+/* styles.css — Minimalista, responsivo e acessível */
+
+/* Reset simples */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --bg: #ffffff;
+  --surface: #fbfdff;
+  --muted: #6b7280;
+  --text: #111827;
+  --brand: #2ecc71; /* primary */
+  --accent: #3498db; /* secondary */
+  --radius: 10px;
+  --gap: 16px;
+  --container: 1100px;
+  --transition: 180ms ease;
+}
+
+/* Respect user motion preference */
+@media (prefers-reduced-motion: reduce){
+  :root{ --transition: 0ms; }
+  * { scroll-behavior: auto; }
+}
+
+/* Base */
+html,body { height: 100%; background: var(--bg); color: var(--text); font-family: Inter, "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial; font-size: 16px; -webkit-font-smoothing:antialiased; }
+.container{ max-width: var(--container); margin: 0 auto; padding: 0 18px; }
+
+/* Generic utilities */
+.row { display:flex; gap: var(--gap); flex-wrap: wrap; }
+.card { background: var(--surface); border-radius: var(--radius); padding: 14px; box-shadow: none; border: 1px solid rgba(15,23,42,0.04); }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:8px; border: none; cursor:pointer; font-weight:600; transition: transform var(--transition), box-shadow var(--transition); text-decoration:none; color: inherit; background: transparent; }
+.btn-primary { background: linear-gradient(90deg,var(--brand),var(--accent)); color: #fff; }
+.btn:focus { outline: 3px solid rgba(52,152,219,0.14); outline-offset: 2px; }
+
+/* NAV */
+.navbar { background: transparent; padding: 12px 0; position: sticky; top: 0; z-index: 80; }
+.navbar .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.logo { display:flex; align-items:center; gap:10px; font-weight:700; color:var(--text); }
+.logo i { color: var(--brand); font-size:20px; }
+
+/* Nav menu */
+.nav-menu { list-style:none; display:flex; gap:12px; align-items:center; }
+.nav-menu a { color: var(--text); text-decoration:none; padding:8px 10px; border-radius:8px; font-weight:600; font-size:0.95rem; }
+.nav-menu a:hover, .nav-menu a:focus { background: rgba(15,23,42,0.04); }
+
+/* Hamburger (mobile) */
+.hamburger { display:none; width:42px; height:36px; align-items:center; justify-content:center; gap:4px; cursor:pointer; background:transparent; border-radius:8px; }
+.hamburger span { display:block; height:3px; width:22px; background:var(--text); border-radius:2px; }
+
+/* HERO */
+.hero { padding:48px 0; display:grid; place-items:center; text-align:center; }
+.hero-content { max-width:880px; background:transparent; padding:24px; border-radius:12px; }
+.hero h1 { font-size:clamp(1.4rem, 2.6vw, 2rem); margin-bottom:8px; color:var(--text); }
+.hero p { color:var(--muted); margin-bottom:14px; }
+
+/* SECTIONS */
+.section { padding:36px 0; }
+.section .section-subtitle { color:var(--muted); margin-bottom:12px; }
+
+/* GRIDs simplificados */
+.info-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:12px; }
+.info-card { display:flex; flex-direction:column; gap:10px; }
+.info-card .icon { width:48px; height:48px; display:grid; place-items:center; border-radius:8px; background:rgba(46,204,113,0.08); color:var(--brand); }
+
+/* Comparison table */
+.comparison-table table { width:100%; border-collapse:collapse; margin-top:14px; }
+.comparison-table th, .comparison-table td { text-align:left; padding:10px; border-bottom:1px solid rgba(15,23,42,0.04); font-size:0.95rem; color:var(--muted); }
+.comparison-table thead th { color:var(--text); font-weight:700; }
+
+/* Vaccines grid */
+.vaccines-grid { margin-top:12px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.vaccine-card { display:flex; flex-direction:column; gap:8px; }
+.vaccine-header { height:48px; display:flex; align-items:center; padding:0 10px; color:#fff; border-radius:8px 8px 0 0; }
+
+/* LOCALIZADOR: layout simples */
+.localizador-container { display:grid; grid-template-columns: 1fr 360px; gap:14px; margin-top:12px; align-items:start; }
+.search-box { display:flex; flex-direction:column; gap:8px; }
+.search-controls { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.filter-options { display:flex; gap:8px; align-items:center; color:var(--muted); font-weight:600; }
+.search-input { padding:10px 12px; border-radius:8px; border:1px solid rgba(15,23,42,0.06); }
+
+/* Map and results */
+.map-container { min-height:420px; border-radius:8px; overflow:hidden; border:1px solid rgba(15,23,42,0.04); background: #e9eef3; }
+.results-container { display:flex; flex-direction:column; gap:8px; padding:10px; border-radius:8px; height:420px; overflow:hidden; border:1px solid rgba(15,23,42,0.04); background:var(--surface); }
+.results-list { overflow:auto; padding-right:6px; display:flex; flex-direction:column; gap:8px; }
+
+/* Result item minimal */
+.result-item { padding:10px; border-radius:8px; cursor:pointer; border:1px solid transparent; display:flex; flex-direction:column; gap:6px; transition: background var(--transition), transform var(--transition); }
+.result-item:hover { background: rgba(15,23,42,0.03); transform: translateY(-3px); }
+.result-item.active { background: rgba(46,204,113,0.06); border-color: rgba(46,204,113,0.12); }
+
+/* TIPS & CONTACT simple */
+.tips-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px; }
+.tip-card { display:flex; gap:12px; align-items:center; padding:12px; border-radius:8px; background:var(--surface); border:1px solid rgba(15,23,42,0.03); }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+.contact-form input, .contact-form textarea { padding:10px; border-radius:8px; border:1px solid rgba(15,23,42,0.06); }
+
+/* FOOTER */
+.footer { padding:20px 0; text-align:center; color:var(--muted); font-size:0.95rem; margin-top:24px; }
+
+/* Responsive: simplificar para mobile */
+@media (max-width: 900px){
+  .info-grid { grid-template-columns:1fr; }
+  .vaccines-grid { grid-template-columns:repeat(2,1fr); }
+  .localizador-container { grid-template-columns:1fr; }
+  .results-container { height:360px; margin-top:8px; }
+  .tips-grid { grid-template-columns:repeat(2,1fr); }
+  .contact-grid { grid-template-columns:1fr; }
+}
+
+@media (max-width: 720px){
+  .nav-menu { display:none; }
+  .hamburger { display:flex; }
+  .vaccines-grid { grid-template-columns:1fr; }
+  .hero { padding:28px 0; }
+  .map-container { min-height:300px; }
+}
+
+/* Mobile nav reveal */
+.navbar.mobile-open .nav-menu {
+  position: absolute;
+  top: 64px;
+  right: 16px;
+  left: 16px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:12px;
+  background:var(--surface);
+  border-radius:8px;
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+/* Small accessibility/helper styles */
+a, button, input, textarea { font-family:inherit; }
+.text-muted { color:var(--muted); font-size:0.95rem; }
